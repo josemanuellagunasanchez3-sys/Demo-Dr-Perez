@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clínica Dental Pérez · Dr. Raúl Pérez · Diseño de sonrisa Guadalajara</title>
+<meta name="description" content="Clínica Dental Pérez. Diseño de sonrisa y carillas de porcelana en Guadalajara. El dentista de los artistas. Dos clínicas: Puerta de Hierro Zapopan y Huentitán Guadalajara.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F4EE;--bg-2:#EFEAE0;--bg-3:#E5DDD0;--bg-soft:#FAF7F0;
+  --navy:#0E1B36;--navy-2:#162847;--navy-3:#1F3559;--navy-soft:#3A4E72;
+  --blue-lt:#7B91B4;--gold:#B89248;--gold-deep:#8F6E2E;--gold-lt:#D8B873;
+  --ink:#0E1B36;--ink-soft:#4A5876;
+  --line:rgba(184,146,72,.3);--line-navy:rgba(14,27,54,.12);
+  --ease:cubic-bezier(.22,1,.36,1);--ease-2:cubic-bezier(.65,0,.35,1);
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',-apple-system,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:19px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}[data-reveal]{opacity:1!important;transform:none!important}}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+.gold-text{background:linear-gradient(110deg,var(--gold-deep) 10%,var(--gold-lt) 45%,var(--gold) 85%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.eyebrow{font-family:var(--sans);font-size:.68rem;letter-spacing:.42em;text-transform:uppercase;font-weight:500;color:var(--gold-deep)}
+.eyebrow-light{color:var(--gold-lt)}
+.tiny{font-family:var(--sans);font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--ink-soft)}
+
+/* TOPBAR */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;justify-content:space-between;align-items:center;padding:18px 32px;background:rgba(247,244,238,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-navy);transition:.4s var(--ease)}
+.topbar.dark{background:rgba(14,27,54,.85);border-bottom-color:rgba(184,146,72,.15)}
+.topbar .brand{font-family:var(--serif);font-size:1.4rem;letter-spacing:.02em;line-height:1.05;cursor:pointer;transition:opacity .3s var(--ease)}
+.topbar .brand:hover{opacity:.75}
+.topbar .brand .l1{color:var(--gold-deep);transition:.4s var(--ease);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-family:var(--sans);display:block;margin-bottom:2px;font-weight:500;font-style:normal}
+.topbar .brand .l2{font-style:italic;font-size:1.35rem}
+.topbar.dark .brand{color:var(--bg)}
+.topbar.dark .brand .l1{color:var(--gold-lt)}
+.lang{display:flex;gap:2px;align-items:center;background:transparent;border:1px solid var(--line-navy);border-radius:40px;padding:4px 5px}
+.lang button{background:none;border:none;color:var(--ink-soft);cursor:pointer;font-family:var(--sans);font-size:.66rem;letter-spacing:.12em;padding:5px 11px;border-radius:30px;transition:.3s var(--ease)}
+.lang button.active{background:linear-gradient(120deg,var(--gold-lt),var(--gold));color:var(--navy)}
+.topbar.dark .lang{border-color:rgba(184,146,72,.25)}
+.topbar.dark .lang button{color:rgba(247,244,238,.7)}
+.topbar.dark .lang button.active{color:var(--navy)}
+@media(max-width:1180px){.topbar{padding:14px 20px}}
+
+/* ===== MENÚ HAMBURGUESA ===== */
+.topbar{justify-content:flex-start;gap:20px}
+.topbar .lang{margin-left:auto}
+.burger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;background:none;border:none;cursor:pointer;padding:7px;border-radius:4px;transition:.3s var(--ease);flex-shrink:0}
+.burger span{display:block;width:100%;height:2px;background:var(--ink-soft);border-radius:2px;transition:.4s var(--ease)}
+.topbar.dark .burger span{background:rgba(247,244,238,.85)}
+.burger:hover span{background:var(--gold-deep)}
+.topbar.dark .burger:hover span{background:var(--gold-lt)}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+.menu-overlay{position:fixed;inset:0;z-index:90;background:rgba(14,27,54,.5);backdrop-filter:blur(4px);opacity:0;visibility:hidden;transition:.4s var(--ease)}
+.menu-overlay.open{opacity:1;visibility:visible}
+.menu-panel{position:fixed;top:0;left:0;bottom:0;z-index:95;width:min(360px,86vw);background:var(--navy);color:var(--bg);transform:translateX(-100%);transition:transform .5s var(--ease);display:flex;flex-direction:column;padding:96px 44px 44px;box-shadow:18px 0 60px -20px rgba(14,27,54,.6);overflow-y:auto}
+.menu-panel.open{transform:translateX(0)}
+.menu-panel .mclose{position:absolute;top:24px;right:28px;background:none;border:none;color:var(--gold-lt);font-size:2rem;line-height:1;font-weight:300;cursor:pointer;font-family:var(--serif);transition:.3s var(--ease)}
+.menu-panel .mclose:hover{opacity:.7;transform:rotate(90deg)}
+.menu-panel .meyebrow{font-family:var(--sans);font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:2.2rem;opacity:.8}
+.menu-panel nav{display:flex;flex-direction:column;gap:0}
+.menu-panel nav a{font-family:var(--serif);font-size:1.5rem;font-weight:300;color:rgba(247,244,238,.92);padding:1rem 0;border-bottom:1px solid rgba(184,146,72,.15);transition:.35s var(--ease);display:flex;align-items:center;gap:14px}
+.menu-panel nav a::before{content:'';width:0;height:1px;background:var(--gold-lt);transition:.35s var(--ease)}
+.menu-panel nav a:hover{color:var(--gold-lt);padding-left:8px}
+.menu-panel nav a:hover::before{width:20px}
+
+#prog{position:fixed;top:0;left:0;height:2px;width:0;z-index:99;background:linear-gradient(90deg,var(--gold-deep),var(--gold-lt))}
+
+.page-num{position:fixed;bottom:42px;left:30px;z-index:75;font-family:var(--serif);pointer-events:none;display:flex;align-items:baseline;gap:8px;mix-blend-mode:difference;color:#fff;opacity:.85}
+.page-num .num-wrap{position:relative;display:inline-block;width:44px;height:38px;overflow:hidden}
+.page-num .cur{position:absolute;left:0;top:0;font-size:2.2rem;font-style:italic;line-height:1;font-weight:300;transition:transform .7s var(--ease-2),opacity .5s var(--ease)}
+.page-num .cur.out{transform:translateY(-100%);opacity:0}
+.page-num .cur.in{animation:numIn .7s var(--ease-2) forwards}
+.page-num .sep{font-family:var(--sans);font-size:.7rem;opacity:.6}
+.page-num .total{font-family:var(--sans);font-size:.7rem;letter-spacing:.18em;opacity:.7}
+@keyframes numIn{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
+@media(max-width:600px){.page-num{bottom:30px;left:18px}}
+
+section{position:relative;padding:14vh 8vw}
+.center{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:100vh}
+[data-reveal]{opacity:0;transform:translateY(42px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
+[data-reveal].in{opacity:1;transform:none}
+[data-reveal][data-delay="1"]{transition-delay:.12s}
+[data-reveal][data-delay="2"]{transition-delay:.24s}
+[data-reveal][data-delay="3"]{transition-delay:.36s}
+[data-reveal][data-delay="4"]{transition-delay:.48s}
+[data-reveal][data-delay="5"]{transition-delay:.6s}
+[data-reveal][data-delay="6"]{transition-delay:.72s}
+
+.section-divider{position:relative;height:1px;background:linear-gradient(90deg,transparent,var(--line) 30%,var(--gold) 50%,var(--line) 70%,transparent);margin:0;opacity:.6}
+
+/* Fade-up de sección entera */
+.section-fade{opacity:0;transform:translateY(60px);transition:opacity 1.3s var(--ease),transform 1.3s var(--ease)}
+.section-fade.in{opacity:1;transform:none}
+
+.btn-gold{display:inline-flex;align-items:center;gap:14px;font-family:var(--sans);font-size:.76rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:var(--navy);background:linear-gradient(120deg,var(--gold-lt),var(--gold),var(--gold-deep));background-size:200% auto;padding:1.2rem 2.8rem;border-radius:2px;transition:.5s var(--ease);box-shadow:0 14px 36px -14px rgba(143,110,46,.55);cursor:pointer;border:none}
+.btn-gold:hover{background-position:right center;transform:translateY(-4px);box-shadow:0 24px 50px -16px rgba(143,110,46,.7)}
+.btn-ghost{display:inline-flex;align-items:center;gap:12px;font-family:var(--sans);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--bg);border:1px solid var(--line);padding:1.1rem 2.4rem;border-radius:2px;transition:.4s var(--ease)}
+.btn-ghost:hover{background:var(--gold);border-color:var(--gold);color:var(--navy);transform:translateY(-3px)}
+
+/* ============= HERO ============= */
+#hero{min-height:100vh;background:var(--navy);color:var(--bg);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:0}
+#hero .bgimg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=1800&auto=format&fit=crop');background-size:cover;background-position:center 30%;transform:scale(1.1);animation:zoom 26s var(--ease) forwards}
+#hero .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,27,54,.55) 0%,rgba(14,27,54,.4) 35%,rgba(14,27,54,.75) 80%,var(--navy) 100%),radial-gradient(ellipse at 30% 50%,rgba(14,27,54,.4),rgba(14,27,54,.85) 75%)}
+#hero .veil-2{position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,rgba(14,27,54,.3) 45%,transparent 100%)}
+#hero .grid-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(184,146,72,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(184,146,72,.05) 1px,transparent 1px);background-size:60px 60px;opacity:.6}
+#hero .inner{position:relative;z-index:3;padding:0 8vw;max-width:1400px;margin:0 auto;width:100%}
+#hero .badge-top{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-lt);border:1px solid rgba(184,146,72,.35);padding:8px 18px;border-radius:40px;opacity:0;animation:fu 1s .3s var(--ease) forwards;background:rgba(14,27,54,.4);backdrop-filter:blur(8px)}
+#hero .badge-top::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;box-shadow:0 0 12px var(--gold)}
+#hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(2.6rem,7.5vw,6rem);line-height:1.05;letter-spacing:-.02em;margin:1.8rem 0 1.8rem;opacity:0;animation:fu 1.3s .55s var(--ease) forwards;max-width:18ch}
+#hero h1 .it{font-style:italic}
+#hero .tagline{opacity:0;animation:fu 1.1s .85s var(--ease) forwards;color:var(--blue-lt);font-size:clamp(1rem,1.6vw,1.25rem);max-width:48ch;margin-bottom:3rem}
+#hero .ctas{display:flex;gap:1rem;opacity:0;animation:fu 1.1s 1.05s var(--ease) forwards;flex-wrap:wrap}
+
+/* ============= 02 · DR FAMOSOS ============= */
+#dr-famosos{background:linear-gradient(180deg,var(--bg-soft),var(--bg-2));text-align:center;overflow:hidden;padding-top:14vh;padding-bottom:14vh}
+#dr-famosos .head{margin-bottom:5rem}
+#dr-famosos .head h2{font-size:clamp(2.2rem,6vw,4.8rem);margin-top:1rem;color:var(--navy)}
+#dr-famosos .head h2 .it{font-style:italic}
+#dr-famosos .head p.lead{color:var(--ink-soft);max-width:48ch;margin:1.5rem auto 0;font-size:1.1rem}
+.fame-carousel{position:relative;max-width:1400px;margin:0 auto;height:540px;display:flex;align-items:center;justify-content:center}
+.fame-track{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.fame-slide{position:absolute;width:380px;height:480px;opacity:0;transform:scale(.85);transition:all 1s var(--ease-2);overflow:hidden;border-radius:3px;box-shadow:0 30px 80px -30px rgba(14,27,54,.4)}
+.fame-slide img{width:100%;height:100%;object-fit:cover;filter:saturate(1.08)}
+.fame-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(247,244,238,.2));mix-blend-mode:overlay;pointer-events:none}
+.fame-slide.active{opacity:1;transform:scale(1) translateX(0);z-index:5;box-shadow:0 40px 100px -30px rgba(143,110,46,.5)}
+.fame-slide.prev{opacity:.55;transform:scale(.78) translateX(-380px);z-index:3;filter:saturate(.7) brightness(.85)}
+.fame-slide.next{opacity:.55;transform:scale(.78) translateX(380px);z-index:3;filter:saturate(.7) brightness(.85)}
+.fame-slide.far-prev{opacity:.25;transform:scale(.65) translateX(-680px);z-index:1;filter:saturate(.4) brightness(.7) blur(2px)}
+.fame-slide.far-next{opacity:.25;transform:scale(.65) translateX(680px);z-index:1;filter:saturate(.4) brightness(.7) blur(2px)}
+.fame-slide.gold-frame{border:2px solid transparent;background:linear-gradient(var(--bg),var(--bg)) padding-box,linear-gradient(135deg,var(--gold-lt),var(--gold),var(--gold-deep)) border-box}
+.fame-dots{display:flex;gap:10px;justify-content:center;margin-top:3rem}
+.fame-dots button{width:8px;height:8px;border-radius:50%;background:rgba(14,27,54,.15);border:none;cursor:pointer;transition:.4s var(--ease);padding:0}
+.fame-dots button.active{background:linear-gradient(120deg,var(--gold-lt),var(--gold));width:28px;border-radius:10px}
+.fame-claim{margin-top:2.5rem;display:inline-flex;align-items:center;gap:14px;background:rgba(14,27,54,.04);padding:14px 28px;border-radius:50px;border:1px solid var(--line)}
+.fame-claim .star{color:var(--gold);font-size:1.2rem}
+.fame-claim .txt{font-family:var(--sans);font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--navy);font-weight:500}
+@media(max-width:760px){.fame-carousel{height:460px}.fame-slide{width:280px;height:380px}.fame-slide.prev{transform:scale(.78) translateX(-280px)}.fame-slide.next{transform:scale(.78) translateX(280px)}.fame-slide.far-prev{transform:scale(.65) translateX(-500px)}.fame-slide.far-next{transform:scale(.65) translateX(500px)}}
+
+/* ============= MARQUEE ENTRE SECCIONES ============= */
+.marquee-band{background:var(--navy);color:var(--bg);overflow:hidden;padding:1.8rem 0;border-top:1px solid rgba(184,146,72,.2);border-bottom:1px solid rgba(184,146,72,.2);position:relative}
+.marquee-band::before,.marquee-band::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none}
+.marquee-band::before{left:0;background:linear-gradient(90deg,var(--navy),transparent)}
+.marquee-band::after{right:0;background:linear-gradient(-90deg,var(--navy),transparent)}
+.marquee-band .track{display:flex;width:max-content;animation:marqueeBand 28s linear infinite;gap:3rem;align-items:center}
+.marquee-band .item{font-family:var(--serif);font-size:clamp(2rem,5vw,3.8rem);font-weight:300;letter-spacing:.02em;white-space:nowrap;display:flex;align-items:center;gap:3rem}
+.marquee-band .item .word{font-style:italic}
+.marquee-band .item .word.alt{font-style:normal;-webkit-text-fill-color:transparent;-webkit-text-stroke:1px var(--gold-lt);color:transparent}
+.marquee-band .item .sep{color:var(--gold);font-size:1.2rem;line-height:1}
+@keyframes marqueeBand{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ============= 03 · SERVICIOS ============= */
+#servicios-int{background:var(--bg);position:relative}
+#servicios-int .head{text-align:center;margin-bottom:5rem}
+#servicios-int .head h2{font-size:clamp(2.1rem,6vw,4.6rem);margin-top:1rem;color:var(--navy)}
+#servicios-int .head h2 .it{font-style:italic}
+.flip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;max-width:1280px;margin:0 auto;perspective:1500px}
+.flip-card{aspect-ratio:3/4;position:relative;cursor:pointer;transform-style:preserve-3d;transition:transform .9s var(--ease-2);border-radius:3px}
+.flip-card.flipped{transform:rotateY(180deg)}
+.flip-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:3px;overflow:hidden;box-shadow:0 20px 50px -28px rgba(14,27,54,.5)}
+.flip-front{background:var(--navy)}
+.flip-front img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.05) brightness(.85);transition:transform 1.4s var(--ease)}
+.flip-front::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(14,27,54,.92));z-index:1}
+.flip-front .num{position:absolute;top:18px;left:18px;z-index:2;font-family:var(--sans);font-size:.6rem;letter-spacing:.3em;color:var(--gold-lt);font-weight:600}
+.flip-front .title{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:1.8rem 1.4rem;color:var(--bg)}
+.flip-front .title h3{font-family:var(--serif);font-size:clamp(1.3rem,2.4vw,1.7rem);font-weight:400;line-height:1.15}
+.flip-front .title .hint{display:flex;align-items:center;gap:6px;font-family:var(--sans);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-lt);margin-top:.8rem;opacity:.85}
+.flip-front .title .hint::after{content:'↻';font-size:.9rem;transition:transform .5s var(--ease)}
+.flip-card:hover .flip-front .title .hint::after{transform:rotate(90deg)}
+.flip-card:hover .flip-front img{transform:scale(1.06)}
+.flip-back{transform:rotateY(180deg);background:linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 100%);color:var(--bg);padding:2rem 1.6rem;display:flex;flex-direction:column;justify-content:space-between;border-top:3px solid var(--gold)}
+.flip-back .head-back{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.flip-back .head-back .num{font-family:var(--sans);font-size:.6rem;letter-spacing:.3em;color:var(--gold-lt);font-weight:600}
+.flip-back .head-back .close{font-family:var(--sans);font-size:1.5rem;color:var(--gold-lt);line-height:1;font-weight:300;cursor:pointer}
+.flip-back h3{font-family:var(--serif);font-size:1.4rem;font-weight:400;margin:1rem 0 1rem;color:var(--bg)}
+.flip-back p{font-family:var(--sans);font-size:.82rem;font-weight:300;line-height:1.6;color:rgba(247,244,238,.78);flex:1}
+.flip-back .ornament{margin-top:1rem;font-family:var(--serif);font-style:italic;color:var(--gold-lt);font-size:.95rem;text-align:right;opacity:.7}
+.flip-front .num,.flip-back .head-back .num,.flip-front .title .hint{display:none}
+.flip-back .head-back{justify-content:flex-end}
+@media(max-width:1000px){.flip-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.flip-grid{grid-template-columns:1fr;max-width:380px}}
+
+/* ============= 04 · SOBRE ============= */
+#sobre{background:var(--bg-2);display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:center;min-height:100vh}
+#sobre .pcol{position:relative}
+#sobre .portrait{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:2px;box-shadow:0 30px 70px -28px rgba(14,27,54,.4);clip-path:inset(100% 0 0 0);transition:clip-path 1.6s var(--ease-2)}
+#sobre .portrait.in{clip-path:inset(0 0 0 0)}
+#sobre .portrait img{width:100%;height:100%;object-fit:cover;filter:saturate(1.05);transform:scale(1.15);transition:transform 2s var(--ease-2)}
+#sobre .portrait.in img{transform:scale(1)}
+#sobre .portrait:hover img{transform:scale(1.05)}
+#sobre .accent{position:absolute;bottom:-32px;right:-28px;background:var(--navy);color:var(--bg);padding:1.5rem 2rem;z-index:3;box-shadow:0 18px 40px -14px rgba(14,27,54,.5);border-top:2px solid var(--gold);opacity:0;transform:translateY(20px);transition:opacity .9s .8s var(--ease),transform .9s .8s var(--ease);min-width:170px}
+#sobre .pcol.in .accent{opacity:1;transform:translateY(0)}
+#sobre .accent .n{font-family:var(--serif);font-size:2.4rem;font-style:italic;line-height:1;display:flex;align-items:baseline;gap:2px}
+#sobre .accent .n .plus{font-size:1.6rem;font-style:normal;color:var(--gold-lt)}
+#sobre .accent .l{font-family:var(--sans);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(247,244,238,.65);margin-top:6px;max-width:18ch}
+#sobre .frame{position:absolute;inset:-14px;border:1px solid var(--line);border-radius:2px;pointer-events:none;opacity:0;transition:opacity 1s .4s var(--ease)}
+#sobre .pcol.in .frame{opacity:1}
+#sobre h2{font-size:clamp(2.1rem,5vw,3.8rem);margin:1.2rem 0 1.6rem;color:var(--navy);line-height:1.05}
+#sobre h2 .it{font-style:italic}
+#sobre p{color:var(--ink-soft);margin-bottom:1.2rem;font-size:1.18rem}
+/* nueva cédula simple y elegante */
+.cedula{margin-top:2.5rem;display:inline-flex;align-items:center;gap:14px;border:1px solid var(--line);background:rgba(247,244,238,.5);padding:14px 24px;border-radius:50px}
+.cedula .icon{width:28px;height:28px;border-radius:50%;background:linear-gradient(120deg,var(--gold-lt),var(--gold));color:var(--navy);display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:.7rem;font-weight:700}
+.cedula .txt{font-family:var(--sans);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);font-weight:500}
+.cedula .txt b{color:var(--gold-deep);font-weight:600}
+@media(max-width:860px){#sobre{grid-template-columns:1fr;gap:4rem}}
+
+/* ============= 05 · GALERÍA — slider con arrastrar ============= */
+#galeria{background:var(--bg)}
+#galeria .head{text-align:center;margin-bottom:5rem}
+#galeria .head h2{font-size:clamp(2.1rem,6vw,4.6rem);margin-top:1rem;color:var(--navy)}
+#galeria .head h2 .it{font-style:italic}
+#galeria .head p{color:var(--ink-soft);margin-top:1rem;font-family:var(--sans);font-size:.85rem;letter-spacing:.05em;font-weight:300}
+.ba-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;max-width:1240px;margin:4rem auto 0}
+.ba{position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:2px;box-shadow:0 20px 50px -28px rgba(14,27,54,.45);user-select:none;-webkit-user-select:none;touch-action:pan-y}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.05);pointer-events:none}
+.ba .reveal-after{z-index:2;clip-path:inset(0 0 0 50%);transition:clip-path .3s var(--ease)}
+.ba.dragging .reveal-after{transition:none}
+.ba .tag{position:absolute;top:14px;left:14px;z-index:3;background:rgba(247,244,238,.95);backdrop-filter:blur(6px);padding:6px 13px;font-family:var(--sans);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--navy);font-weight:600}
+.ba .tag.b{left:auto;right:14px;z-index:1;background:rgba(14,27,54,.85);color:var(--bg)}
+/* manija visible y arrastrable, optimizada para touch */
+.ba .handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--bg);z-index:4;transform:translateX(-1px);box-shadow:0 0 12px rgba(0,0,0,.3);transition:left .3s var(--ease);cursor:ew-resize}
+.ba.dragging .handle{transition:none}
+.ba .handle::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.15);backdrop-filter:blur(2px);animation:pulseRing 2s ease-in-out infinite;pointer-events:none}
+.ba .handle::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(120deg,var(--gold-lt),var(--gold));color:var(--navy);width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:1.1rem;font-weight:700;box-shadow:0 6px 18px rgba(143,110,46,.5);background-image:linear-gradient(120deg,var(--gold-lt),var(--gold));cursor:grab;touch-action:none}
+.ba .handle .grip{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:5;color:var(--navy);font-family:var(--sans);font-size:.9rem;font-weight:700;pointer-events:none;letter-spacing:-2px}
+.ba.dragging .handle .grip{cursor:grabbing}
+.ba .case-num{position:absolute;bottom:14px;left:14px;z-index:3;font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--bg);text-shadow:0 2px 8px rgba(0,0,0,.6)}
+.ba .hint-mobile{position:absolute;bottom:14px;right:14px;z-index:3;font-family:var(--sans);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--bg);background:rgba(14,27,54,.6);backdrop-filter:blur(4px);padding:5px 10px;border-radius:20px;opacity:.85}
+@keyframes pulseRing{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.5}50%{transform:translate(-50%,-50%) scale(1.4);opacity:0}}
+@media(max-width:860px){.ba-grid{grid-template-columns:1fr;max-width:420px}}
+
+/* ============= 06 · YOUTUBE ============= */
+#redcarpet{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:var(--bg);position:relative;overflow:hidden}
+#redcarpet::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 20% 30%,rgba(184,146,72,.08),transparent 40%),radial-gradient(circle at 80% 70%,rgba(184,146,72,.06),transparent 40%)}
+#redcarpet .head{text-align:center;margin-bottom:5rem;position:relative;z-index:2}
+#redcarpet .head h2{font-size:clamp(2.1rem,6vw,4.8rem);margin-top:1rem;color:var(--bg)}
+#redcarpet .head h2 .it{font-style:italic}
+#redcarpet .head p{color:rgba(247,244,238,.7);margin-top:1rem;font-family:var(--sans);font-size:.9rem;font-weight:300;max-width:62ch;margin-left:auto;margin-right:auto;line-height:1.7}
+.yt-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;max-width:1320px;margin:0 auto;position:relative;z-index:2}
+.yt-card{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:2px;background:var(--navy-3);cursor:pointer;transition:.5s var(--ease);box-shadow:0 20px 50px -24px rgba(0,0,0,.6);text-decoration:none;color:inherit;display:block}
+.yt-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.1) brightness(.88);transition:.7s var(--ease)}
+.yt-card::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,27,54,.1) 0%,transparent 40%,rgba(14,27,54,.92) 100%)}
+.yt-card .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;width:56px;height:56px;border-radius:50%;background:rgba(247,244,238,.95);color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:.4s var(--ease);box-shadow:0 12px 30px rgba(0,0,0,.5)}
+.yt-card .meta{position:absolute;bottom:0;left:0;right:0;z-index:3;padding:1rem 1.1rem}
+.yt-card .show{font-family:var(--sans);font-size:.56rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold-lt);font-weight:600}
+.yt-card h4{font-family:var(--serif);font-size:.95rem;font-weight:400;line-height:1.2;margin-top:.35rem;color:var(--bg)}
+.yt-card:hover img{transform:scale(1.06);filter:saturate(1.1) brightness(.95)}
+.yt-card:hover .play{transform:translate(-50%,-50%) scale(1.08);background:linear-gradient(120deg,var(--gold-lt),var(--gold));color:var(--navy)}
+.yt-cta{text-align:center;margin-top:4rem;position:relative;z-index:2}
+@media(max-width:980px){.yt-grid{grid-template-columns:1fr 1fr;gap:1rem}}
+@media(max-width:480px){.yt-grid{grid-template-columns:1fr}}
+
+/* ============= 07 · UBICACIONES ============= */
+#ubicaciones{background:var(--bg)}
+#ubicaciones .head{text-align:center;margin-bottom:5rem}
+#ubicaciones .head h2{font-size:clamp(2.1rem,6vw,4.6rem);margin-top:1rem;color:var(--navy)}
+#ubicaciones .head h2 .it{font-style:italic}
+#ubicaciones .head p.lead-ubi{color:var(--ink-soft);max-width:62ch;margin:1.5rem auto 0;font-size:1.1rem;line-height:1.6}
+.clinics{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;max-width:1180px;margin:0 auto}
+.clinic{position:relative;overflow:hidden;border-radius:2px;background:var(--bg-2);transition:.6s var(--ease);box-shadow:0 14px 40px -28px rgba(14,27,54,.5);display:flex;flex-direction:column}
+.clinic:hover{transform:translateY(-8px);box-shadow:0 30px 60px -28px rgba(14,27,54,.55)}
+.clinic .pic{aspect-ratio:16/10;overflow:hidden;position:relative}
+.clinic .pic img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.clinic:hover .pic img{transform:scale(1.07)}
+.clinic .stamp{position:absolute;top:18px;left:18px;z-index:2;font-family:var(--sans);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;background:rgba(247,244,238,.95);color:var(--navy);padding:6px 14px;font-weight:600}
+.clinic .c{padding:2.5rem;flex:1;display:flex;flex-direction:column}
+.clinic h3{font-size:2rem;font-weight:400;margin-bottom:1rem;color:var(--navy)}
+.clinic .city{font-family:var(--sans);font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:.5rem}
+.clinic p.addr{font-family:var(--sans);font-size:.86rem;font-weight:300;color:var(--ink-soft);line-height:1.7;margin-bottom:1.8rem;flex:1}
+.clinic .btns{display:flex;gap:.7rem;flex-wrap:wrap}
+.clinic .b{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;padding:13px 22px;border-radius:2px;transition:.4s var(--ease)}
+.clinic .b.map{color:var(--navy);border:1px solid var(--line-navy)}
+.clinic .b.map:hover{background:var(--navy);color:var(--bg);border-color:var(--navy)}
+.clinic .b.wa{color:var(--bg);background:linear-gradient(120deg,#25D366,#128C7E)}
+.clinic .b.wa:hover{transform:translateY(-2px);box-shadow:0 12px 26px -10px rgba(18,140,126,.5)}
+@media(max-width:860px){.clinics{grid-template-columns:1fr}}
+
+/* ============= 08 · RESEÑAS ============= */
+#resenas{background:var(--bg-3);text-align:center;overflow:hidden}
+#resenas .head{padding:0 8vw}
+#resenas .head h2{font-size:clamp(2.1rem,6vw,4.6rem);margin-top:1rem;color:var(--navy)}
+#resenas .head h2 .it{font-style:italic}
+#resenas .stars-row{display:flex;align-items:center;justify-content:center;gap:1rem;margin:2rem 0 4rem;font-family:var(--sans)}
+#resenas .stars-row .stars{color:var(--gold);font-size:1.4rem;letter-spacing:.15em}
+#resenas .stars-row .rating{font-family:var(--serif);font-size:2rem;font-weight:500;color:var(--navy)}
+#resenas .stars-row .count{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
+.reviews-marquee{position:relative;width:100%;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.reviews-track{display:flex;gap:1.6rem;width:max-content;animation:marquee 50s linear infinite}
+.reviews-track:hover{animation-play-state:paused}
+.review{flex:0 0 380px;background:var(--bg);padding:2.4rem 1.9rem;border-radius:2px;text-align:left;position:relative;border:1px solid var(--line-navy);transition:.4s var(--ease)}
+.review:hover{border-color:var(--line);box-shadow:0 20px 40px -22px rgba(14,27,54,.3)}
+.review .top{display:flex;align-items:center;gap:14px;margin-bottom:1rem}
+.review .av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--navy-3));color:var(--bg);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;font-size:1.2rem;flex-shrink:0}
+.review .top .nm{font-family:var(--sans);font-size:.86rem;font-weight:500;color:var(--navy)}
+.review .top .d{font-family:var(--sans);font-size:.66rem;color:var(--ink-soft);letter-spacing:.05em}
+.review .stars{color:var(--gold);font-size:.95rem;letter-spacing:.1em;margin-bottom:.8rem}
+.review p{font-family:var(--serif);font-size:1rem;color:var(--ink-soft);line-height:1.55;font-style:italic}
+.review .g{position:absolute;top:18px;right:18px;font-family:var(--sans);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);opacity:.7}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.google-cta{margin-top:3rem;display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);padding:12px 22px;border:1px solid var(--line);border-radius:40px;transition:.4s var(--ease);background:var(--bg);position:relative;z-index:2}
+.google-cta:hover{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+
+/* ============= 09 · FAQ ============= */
+#faq{background:var(--bg)}
+#faq .head{text-align:center;margin-bottom:4rem}
+#faq .head h2{font-size:clamp(2.1rem,6vw,4.6rem);margin-top:1rem;color:var(--navy)}
+#faq .head h2 .it{font-style:italic}
+.faq-list{max-width:900px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--line-navy);padding:1.6rem 0;cursor:pointer;transition:.4s var(--ease)}
+.faq-item:first-child{border-top:1px solid var(--line-navy)}
+.faq-item .q{display:flex;justify-content:space-between;align-items:center;gap:2rem;font-family:var(--serif);font-size:clamp(1.2rem,2.4vw,1.6rem);font-weight:400;color:var(--navy);transition:.4s var(--ease)}
+.faq-item .q .plus{font-family:var(--sans);font-size:1.4rem;color:var(--gold-deep);transition:.5s var(--ease);font-weight:300;flex-shrink:0}
+.faq-item.open .q{color:var(--gold-deep)}
+.faq-item.open .q .plus{transform:rotate(45deg)}
+.faq-item .a{font-family:var(--sans);font-size:.95rem;color:var(--ink-soft);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .6s var(--ease),margin-top .4s var(--ease);font-weight:300}
+.faq-item.open .a{max-height:300px;margin-top:1rem}
+
+/* ============= 10 · CONTACTO ============= */
+#contacto{background:var(--navy);color:var(--bg);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+#contacto::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 50% 60%,rgba(184,146,72,.15),transparent 60%)}
+#contacto .inner{position:relative;z-index:2;padding:0 8vw;max-width:1000px}
+#contacto h2{font-size:clamp(2.4rem,7vw,5.4rem);margin:1.5rem 0;color:var(--bg);font-weight:300;line-height:1.05}
+#contacto h2 .it{font-style:italic}
+#contacto .lead{color:var(--blue-lt);max-width:52ch;margin:0 auto 3rem;font-size:1.15rem;line-height:1.65}
+#contacto .wa-options{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1rem}
+#contacto .wa-options .btn-gold{background:linear-gradient(120deg,#25D366,#128C7E);color:var(--bg);box-shadow:0 14px 36px -14px rgba(18,140,126,.55)}
+#contacto .wa-options .btn-gold:hover{box-shadow:0 24px 50px -16px rgba(18,140,126,.7)}
+#contacto .wa-options small{display:block;font-size:.6rem;letter-spacing:.25em;margin-top:6px;opacity:.85}
+.socials{display:flex;gap:.8rem;justify-content:center;margin-top:4rem;flex-wrap:wrap}
+.socials a{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(247,244,238,.75);border:1px solid rgba(184,146,72,.3);padding:12px 22px;border-radius:40px;transition:.4s var(--ease)}
+.socials a:hover{color:var(--navy);background:var(--gold-lt);border-color:var(--gold-lt);transform:translateY(-3px)}
+.socials a .ig-followers{color:var(--gold-lt);font-weight:600}
+
+footer{text-align:center;padding:5vh 8vw;background:var(--navy-2);color:var(--bg)}
+footer .name{font-family:var(--serif);font-size:1.6rem;font-style:italic;color:var(--bg)}
+footer .name b{font-style:normal;font-weight:500}
+footer .meta{font-family:var(--sans);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(247,244,238,.5);margin-top:1rem;line-height:2}
+footer .credit{margin-top:2rem;font-family:var(--sans);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(216,184,115,.55);font-weight:400;line-height:1.9}
+footer .credit a{color:var(--gold-lt);font-weight:500;text-decoration:none;transition:opacity .3s var(--ease)}
+footer .credit a:hover{opacity:.75;text-decoration:underline}
+footer .rights{display:block;color:rgba(247,244,238,.4);margin-bottom:6px;font-weight:300}
+
+.demo-note{position:fixed;bottom:0;left:0;right:0;z-index:60;background:linear-gradient(90deg,var(--gold),var(--gold-deep));color:var(--bg);text-align:center;font-family:var(--sans);font-size:.68rem;letter-spacing:.05em;padding:8px;font-weight:500}
+.demo-note b{font-weight:700}
+
+@keyframes fu{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:none}}
+@keyframes fade{to{opacity:1}}
+@keyframes zoom{to{transform:scale(1)}}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<header class="topbar dark">
+  <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <a class="brand" href="#hero" aria-label="Inicio">
+    <span class="l1">Clínica Dental</span>
+    <span class="l2 gold-text">Pérez</span>
+  </a>
+  <div class="lang">
+    <button data-lang="es" class="active">ES</button>
+    <button data-lang="en">EN</button>
+  </div>
+</header>
+
+<!-- MENÚ LATERAL -->
+<div class="menu-overlay" id="menuOverlay"></div>
+<aside class="menu-panel" id="menuPanel" aria-hidden="true">
+  <button class="mclose" id="menuClose" aria-label="Cerrar menú">×</button>
+  <p class="meyebrow">Clínica Dental Pérez</p>
+  <nav>
+    <a href="#dr-famosos" data-t="nav-1">Elegida por artistas</a>
+    <a href="#servicios-int" data-t="nav-2">Nuestros servicios</a>
+    <a href="#sobre" data-t="nav-3">El experto</a>
+    <a href="#galeria" data-t="nav-4">Resultados</a>
+    <a href="#redcarpet" data-t="nav-5">Apariciones</a>
+    <a href="#ubicaciones" data-t="nav-6">Nuestras clínicas</a>
+    <a href="#contacto" data-t="nav-7">Contacto</a>
+  </nav>
+</aside>
+
+<!-- 01 · HERO -->
+<section id="hero" data-page="01">
+  <div class="bgimg"></div>
+  <div class="grid-lines"></div>
+  <div class="veil"></div>
+  <div class="veil-2"></div>
+  <div class="inner">
+    <h1 data-t="hero-h"><span class="it gold-text">La sonrisa elegida</span><br>por artistas.<br>Creada para ti.</h1>
+    <p class="tagline" data-t="hero-tagline">Especialistas en diseño de sonrisa y carillas de porcelana en Guadalajara.</p>
+    <div class="ctas">
+      <a class="btn-gold" href="https://api.whatsapp.com/send?phone=523315315405&text=Hola%2C%20me%20interesa%20una%20cita%20con%20el%20Dr%20Ra%C3%BAl" target="_blank" rel="noopener" data-t="hero-cta1">Agendar cita →</a>
+      <a class="btn-ghost" href="#galeria" data-t="hero-cta2">Ver casos</a>
+    </div>
+  </div>
+</section>
+<div class="section-divider"></div>
+
+<!-- 02 · DR FAMOSOS -->
+<section id="dr-famosos" data-page="02" class="section-fade">
+  <div class="head" data-reveal>
+    <p class="eyebrow" data-t="fame-eyebrow">Confianza de élite</p>
+    <h2 data-t="fame-h">El <span class="it gold-text">Dr. de los famosos</span></h2>
+    <p class="lead" data-t="fame-lead">Experto en diseño de sonrisa. Reconocido por figuras públicas, artistas y profesionales que entienden que su imagen abre puertas.</p>
+  </div>
+  <div class="fame-carousel" data-reveal data-delay="1">
+    <div class="fame-track" id="fameTrack">
+      <div class="fame-slide gold-frame"><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_1440,w_720,f_auto,q_auto/1187729/353667_604303.jpg" alt=""></div>
+      <div class="fame-slide gold-frame"><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_1440,w_720,f_auto,q_auto/1187729/369930_622911.jpeg" alt=""></div>
+      <div class="fame-slide gold-frame"><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_1440,w_720,f_auto,q_auto/1187729/556502_861060.jpeg" alt=""></div>
+      <div class="fame-slide gold-frame"><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_1440,w_720,f_auto,q_auto/1187729/773763_576212.png" alt=""></div>
+    </div>
+  </div>
+  <div class="fame-dots" data-reveal data-delay="2">
+    <button class="active" data-fd="0"></button><button data-fd="1"></button><button data-fd="2"></button><button data-fd="3"></button>
+  </div>
+  <div class="fame-claim" data-reveal data-delay="3">
+    <span class="star">★</span><span class="txt" data-t="fame-claim">Experto en diseño de sonrisa</span><span class="star">★</span>
+  </div>
+</section>
+
+<!-- MARQUEE entre secciones -->
+<div class="marquee-band">
+  <div class="track">
+    <span class="item"><span class="word" data-t="mq-1">Diseño de sonrisa</span><span class="sep">✦</span><span class="word alt" data-t="mq-2">Ortodoncia</span><span class="sep">✦</span><span class="word" data-t="mq-3">Carillas</span><span class="sep">✦</span></span>
+    <span class="item"><span class="word" data-t="mq-1b">Diseño de sonrisa</span><span class="sep">✦</span><span class="word alt" data-t="mq-2b">Ortodoncia</span><span class="sep">✦</span><span class="word" data-t="mq-3b">Carillas</span><span class="sep">✦</span></span>
+    <span class="item"><span class="word">Diseño de sonrisa</span><span class="sep">✦</span><span class="word alt">Ortodoncia</span><span class="sep">✦</span><span class="word">Carillas</span><span class="sep">✦</span></span>
+    <span class="item"><span class="word">Diseño de sonrisa</span><span class="sep">✦</span><span class="word alt">Ortodoncia</span><span class="sep">✦</span><span class="word">Carillas</span><span class="sep">✦</span></span>
+  </div>
+</div>
+<div class="section-divider"></div>
+
+<!-- 03 · SERVICIOS -->
+<section id="servicios-int" data-page="03">
+  <div class="head" data-reveal>
+    <p class="eyebrow" data-t="srvi-eyebrow">Lo que ofrecemos</p>
+    <h2 data-t="srvi-h">Servicios <span class="it gold-text">de élite</span></h2>
+    <p class="tiny" style="margin-top:1.2rem" data-t="srvi-sub">Da clic en cada tarjeta para descubrir más</p>
+  </div>
+  <div class="flip-grid">
+    <div class="flip-card" data-reveal>
+      <div class="flip-face flip-front"><span class="num">01</span><img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=700&auto=format&fit=crop" alt=""><div class="title"><h3 data-t="sv1">Diseño de sonrisa</h3><span class="hint" data-t="hint">Voltear tarjeta</span></div></div>
+      <div class="flip-face flip-back"><div class="head-back"><span class="num">01</span><span class="close">×</span></div><h3 data-t="sv1">Diseño de sonrisa</h3><p data-t="sv1d">Nuestra especialidad. Creamos sonrisas a la medida de tu rostro, tu carácter y tu estilo de vida. El servicio que ha hecho del Dr. Raúl la referencia entre figuras públicas.</p><div class="ornament">—</div></div>
+    </div>
+    <div class="flip-card" data-reveal data-delay="1">
+      <div class="flip-face flip-front"><span class="num">02</span><img src="https://images.unsplash.com/photo-1588776813941-dcf9c55e84d2?q=80&w=687&auto=format&fit=crop" alt=""><div class="title"><h3 data-t="sv2">Cirugías</h3><span class="hint" data-t="hint">Voltear tarjeta</span></div></div>
+      <div class="flip-face flip-back"><div class="head-back"><span class="num">02</span><span class="close">×</span></div><h3 data-t="sv2">Cirugías</h3><p data-t="sv2d">Procedimientos quirúrgicos dentales y maxilofaciales con técnicas modernas, mínimamente invasivas y enfoque estético en cada paso.</p><div class="ornament">—</div></div>
+    </div>
+    <div class="flip-card" data-reveal data-delay="2">
+      <div class="flip-face flip-front"><span class="num">03</span><img src="https://plus.unsplash.com/premium_photo-1744085660320-4cb826948171?w=600&auto=format&fit=crop&q=60" alt=""><div class="title"><h3 data-t="sv3">Ortodoncia</h3><span class="hint" data-t="hint">Voltear tarjeta</span></div></div>
+      <div class="flip-face flip-back"><div class="head-back"><span class="num">03</span><span class="close">×</span></div><h3 data-t="sv3">Ortodoncia</h3><p data-t="sv3d">Alineación dental discreta y eficaz. Brackets estéticos y alineadores transparentes para que el proceso sea tan elegante como el resultado.</p><div class="ornament">—</div></div>
+    </div>
+    <div class="flip-card" data-reveal data-delay="3">
+      <div class="flip-face flip-front"><span class="num">04</span><img src="https://images.unsplash.com/photo-1593022356769-11f762e25ed9?q=80&w=1170&auto=format&fit=crop" alt=""><div class="title"><h3 data-t="sv4">Implantes</h3><span class="hint" data-t="hint">Voltear tarjeta</span></div></div>
+      <div class="flip-face flip-back"><div class="head-back"><span class="num">04</span><span class="close">×</span></div><h3 data-t="sv4">Implantes</h3><p data-t="sv4d">Reposición fija y permanente de piezas dentales, con materiales de alta gama. Recupera tu mordida y tu confianza al mismo tiempo.</p><div class="ornament">—</div></div>
+    </div>
+    <div class="flip-card" data-reveal data-delay="4">
+      <div class="flip-face flip-front"><span class="num">05</span><img src="https://images.unsplash.com/photo-1684607633251-8a4a8d94ddd2?q=80&w=1331&auto=format&fit=crop" alt=""><div class="title"><h3 data-t="sv5">Periodoncia</h3><span class="hint" data-t="hint">Voltear tarjeta</span></div></div>
+      <div class="flip-face flip-back"><div class="head-back"><span class="num">05</span><span class="close">×</span></div><h3 data-t="sv5">Periodoncia</h3><p data-t="sv5d">Cuidado especializado de encías. La base de toda sonrisa hermosa: encías sanas, equilibradas y libres de enfermedad.</p><div class="ornament">—</div></div>
+    </div>
+    <div class="flip-card" data-reveal data-delay="5">
+      <div class="flip-face flip-front"><span class="num">06</span><img src="https://plus.unsplash.com/premium_photo-1681967039743-37dc3a27f4ce?q=80&w=1205&auto=format&fit=crop" alt=""><div class="title"><h3 data-t="sv6">Pediatría dental</h3><span class="hint" data-t="hint">Voltear tarjeta</span></div></div>
+      <div class="flip-face flip-back"><div class="head-back"><span class="num">06</span><span class="close">×</span></div><h3 data-t="sv6">Pediatría dental</h3><p data-t="sv6d">Atención cálida y profesional para los más pequeños. Cuidamos su primera relación con el dentista para que sea positiva de por vida.</p><div class="ornament">—</div></div>
+    </div>
+    <div class="flip-card" data-reveal data-delay="6">
+      <div class="flip-face flip-front"><span class="num">07</span><img src="https://plus.unsplash.com/premium_photo-1674998806375-58edc35ddf3b?q=80&w=687&auto=format&fit=crop" alt=""><div class="title"><h3 data-t="sv7">Endodoncia</h3><span class="hint" data-t="hint">Voltear tarjeta</span></div></div>
+      <div class="flip-face flip-back"><div class="head-back"><span class="num">07</span><span class="close">×</span></div><h3 data-t="sv7">Endodoncia</h3><p data-t="sv7d">Tratamientos de conducto con tecnología avanzada para salvar piezas dentales con precisión, comodidad y resultados duraderos.</p><div class="ornament">—</div></div>
+    </div>
+  </div>
+  <p class="tiny" style="text-align:center;margin-top:3rem" data-reveal data-t="srvi-foot">Cada caso es único. Contáctanos para una valoración personalizada</p>
+</section>
+<div class="section-divider"></div>
+
+<!-- 04 · SOBRE -->
+<section id="sobre" data-page="04">
+  <div class="pcol" data-pcol>
+    <div class="portrait" data-portrait>
+      <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=1170&auto=format&fit=crop" alt="Dr. Raúl Pérez">
+    </div>
+    <div class="frame"></div>
+    <div class="accent">
+      <div class="n"><span class="plus">+</span><span class="counter" data-counter data-target="10">0</span></div>
+      <div class="l" data-t="acc-1">Años transformando sonrisas</div>
+    </div>
+  </div>
+  <div data-reveal data-delay="1">
+    <p class="eyebrow" data-t="sobre-eyebrow">Sobre el doctor</p>
+    <h2 data-t="sobre-h">El experto detrás de <span class="it gold-text">tu sonrisa</span></h2>
+    <p data-t="sobre-p1">El Dr. Raúl Pérez no diseña dientes: diseña la primera impresión que dejas al entrar a una habitación. Especialista en diseño de sonrisa y carillas de porcelana, su trabajo es referencia entre figuras públicas y profesionales que viven de su imagen.</p>
+    <p data-t="sobre-p2">Con más de una década de trayectoria y dos clínicas en Guadalajara, ha construido una marca propia — <em>Dr. Elite</em> — donde cada caso es tratado como una pieza única, hecha a la medida de tu rostro y tu carácter.</p>
+    <div class="cedula">
+      <div class="icon">✓</div>
+      <div class="txt" data-t="cedula"><b>Cédula profesional</b> · por confirmar</div>
+    </div>
+  </div>
+</section>
+<div class="section-divider"></div>
+
+<!-- 05 · GALERÍA -->
+<section id="galeria" data-page="05">
+  <div class="head" data-reveal>
+    <p class="eyebrow" data-t="gal-eyebrow">Transformaciones</p>
+    <h2 data-t="gal-h">El antes que <span class="it gold-text">nadie recordará</span></h2>
+    <p data-t="gal-p">Arrastra la manija dorada de cada imagen para revelar la transformación</p>
+  </div>
+  <div class="ba-grid">
+    <div class="ba" data-ba>
+      <img class="before" src="https://images.unsplash.com/photo-1581939511501-4ec557ff0957?q=80&w=1170&auto=format&fit=crop" alt="">
+      <img class="after reveal-after" src="https://images.unsplash.com/photo-1769559893692-c6d0623bf8e4?q=80&w=1025&auto=format&fit=crop" alt="">
+      <div class="tag" data-t="ba-a">Después</div><div class="tag b" data-t="ba-b">Antes</div>
+      <div class="handle"><span class="grip">‹›</span></div>
+      <div class="case-num">Caso I</div>
+      <div class="hint-mobile" data-t="ba-hint">Arrastra</div>
+    </div>
+    <div class="ba" data-ba>
+      <img class="before" src="https://images.unsplash.com/photo-1658849350672-7a708745b68e?w=600&auto=format&fit=crop&q=60" alt="">
+      <img class="after reveal-after" src="https://images.unsplash.com/photo-1678473882249-6378b6e12241?w=600&auto=format&fit=crop&q=60" alt="">
+      <div class="tag" data-t="ba-a2">Después</div><div class="tag b" data-t="ba-b2">Antes</div>
+      <div class="handle"><span class="grip">‹›</span></div>
+      <div class="case-num">Caso II</div>
+      <div class="hint-mobile" data-t="ba-hint2">Arrastra</div>
+    </div>
+    <div class="ba" data-ba>
+      <img class="before" src="https://images.unsplash.com/photo-1663182245833-7dd667277043?q=80&w=1099&auto=format&fit=crop" alt="">
+      <img class="after reveal-after" src="https://images.unsplash.com/photo-1678473882249-6378b6e12241?w=600&auto=format&fit=crop&q=60&v=2" alt="">
+      <div class="tag" data-t="ba-a3">Después</div><div class="tag b" data-t="ba-b3">Antes</div>
+      <div class="handle"><span class="grip">‹›</span></div>
+      <div class="case-num">Caso III</div>
+      <div class="hint-mobile" data-t="ba-hint3">Arrastra</div>
+    </div>
+  </div>
+  <p class="tiny" style="text-align:center;margin-top:2.5rem" data-reveal data-t="gal-foot">Imágenes de muestra · se reemplazan con casos reales del Dr.</p>
+</section>
+<div class="section-divider"></div>
+
+<!-- 06 · YOUTUBE -->
+<section id="redcarpet" data-page="06">
+  <div class="head" data-reveal>
+    <p class="eyebrow eyebrow-light" data-t="rc-eyebrow">Como en cámara</p>
+    <h2 data-t="rc-h">Donde nacen las <span class="it gold-text">sonrisas que inspiran</span></h2>
+    <p data-t="rc-p">Descubre entrevistas, colaboraciones y experiencias junto a artistas, celebridades e influencers que forman parte del universo Dr. Elite.</p>
+  </div>
+  <div class="yt-grid">
+    <a class="yt-card" href="https://youtu.be/5LBuUVDL87c" target="_blank" rel="noopener" data-reveal>
+      <img src="https://img.youtube.com/vi/5LBuUVDL87c/hqdefault.jpg" alt="" onerror="this.src='https://img.youtube.com/vi/5LBuUVDL87c/mqdefault.jpg'">
+      <div class="play">▶</div><div class="meta"><div class="show" data-t="rc-1s">Entrevista</div><h4 data-t="rc-1h">En el canal del Dr. Raúl</h4></div>
+    </a>
+    <a class="yt-card" href="https://youtu.be/kg2lSQWkYr4" target="_blank" rel="noopener" data-reveal data-delay="1">
+      <img src="https://img.youtube.com/vi/kg2lSQWkYr4/hqdefault.jpg" alt="" onerror="this.src='https://img.youtube.com/vi/kg2lSQWkYr4/mqdefault.jpg'">
+      <div class="play">▶</div><div class="meta"><div class="show" data-t="rc-2s">Entrevista</div><h4 data-t="rc-2h">En el canal del Dr. Raúl</h4></div>
+    </a>
+    <a class="yt-card" href="https://youtu.be/OJidesp7JJM" target="_blank" rel="noopener" data-reveal data-delay="2">
+      <img src="https://img.youtube.com/vi/OJidesp7JJM/hqdefault.jpg" alt="" onerror="this.src='https://img.youtube.com/vi/OJidesp7JJM/mqdefault.jpg'">
+      <div class="play">▶</div><div class="meta"><div class="show" data-t="rc-3s">Entrevista</div><h4 data-t="rc-3h">En el canal del Dr. Raúl</h4></div>
+    </a>
+    <a class="yt-card" href="https://youtu.be/5vRKfLeWQmw" target="_blank" rel="noopener" data-reveal data-delay="3">
+      <img src="https://img.youtube.com/vi/5vRKfLeWQmw/hqdefault.jpg" alt="" onerror="this.src='https://img.youtube.com/vi/5vRKfLeWQmw/mqdefault.jpg'">
+      <div class="play">▶</div><div class="meta"><div class="show" data-t="rc-4s">Entrevista</div><h4 data-t="rc-4h">En el canal del Dr. Raúl</h4></div>
+    </a>
+  </div>
+  <div class="yt-cta">
+    <a class="btn-ghost" href="http://www.youtube.com/@dr.raulperez3986" target="_blank" rel="noopener" data-t="rc-cta">Ver canal completo en YouTube →</a>
+  </div>
+</section>
+<div class="section-divider"></div>
+
+<!-- 07 · UBICACIONES -->
+<section id="ubicaciones" data-page="07">
+  <div class="head" data-reveal>
+    <p class="eyebrow" data-t="ubi-eyebrow">Nuestras Clínicas</p>
+    <h2 data-t="ubi-h">Dos clínicas, <span class="it gold-text">una sola obsesión</span></h2>
+  </div>
+  <div class="clinics">
+    <div class="clinic" data-reveal>
+      <div class="pic"><span class="stamp">Premium</span><img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=900&auto=format&fit=crop" alt=""></div>
+      <div class="c">
+        <p class="city">Zapopan</p>
+        <h3 data-t="cl1-h">Puerta de Hierro</h3>
+        <p class="addr" data-t="cl1-a">Nuestra sede premium, pensada para la experiencia más exclusiva. Atención personalizada en una de las zonas más distinguidas de Zapopan.</p>
+        <div class="btns">
+          <a class="b map" href="https://maps.app.goo.gl/X9Xg7KMZWQ1DM6MZ9" target="_blank" rel="noopener" data-t="cl1-m">📍 Ver mapa</a>
+          <a class="b wa" href="https://api.whatsapp.com/send?phone=523315315405&text=hola%2C%20me%20interesa%20una%20cita%20con%20el%20dr%20Raul%20en%20Puerta%20de%20Hierro" target="_blank" rel="noopener" data-t="cl1-w">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <div class="clinic" data-reveal data-delay="1">
+      <div class="pic"><span class="stamp">Clínica</span><img src="https://plus.unsplash.com/premium_photo-1675686363422-7d7ab88ee530?q=80&w=1114&auto=format&fit=crop" alt=""></div>
+      <div class="c">
+        <p class="city">Guadalajara</p>
+        <h3 data-t="cl2-h">Huentitán</h3>
+        <p class="addr" data-t="cl2-a">La sede original. Atención cercana y de alta calidad, en el corazón de Guadalajara. Misma excelencia, misma firma del Dr. Pérez.</p>
+        <div class="btns">
+          <a class="b map" href="https://maps.app.goo.gl/X9Xg7KMZWQ1DM6MZ9" target="_blank" rel="noopener" data-t="cl2-m">📍 Ver mapa</a>
+          <a class="b wa" href="https://api.whatsapp.com/send?phone=523314463097&text=hola%2C%20me%20interesa%20una%20cita%20en%20Huentit%C3%A1n" target="_blank" rel="noopener" data-t="cl2-w">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="section-divider"></div>
+
+<!-- 08 · RESEÑAS -->
+<section id="resenas" data-page="08">
+  <div class="head" data-reveal>
+    <p class="eyebrow" data-t="rs-eyebrow">Experiencias reales, resultados extraordinarios</p>
+    <h2 data-t="rs-h">La opinión <span class="it gold-text">de quienes vivieron la experiencia</span></h2>
+  </div>
+  <div class="stars-row" data-reveal data-delay="1">
+    <span class="stars">★★★★★</span>
+    <span class="rating">4.9</span>
+    <span class="count" data-t="rs-count">basado en reseñas</span>
+  </div>
+  <div class="reviews-marquee">
+    <div class="reviews-track">
+      <div class="review"><div class="g">★ Google</div><div class="top"><div class="av">M</div><div><div class="nm">María F.</div><div class="d">hace 2 semanas</div></div></div><div class="stars">★★★★★</div><p>"Entré tapándome la boca al reír. Salí sin querer dejar de sonreír. El trabajo del Dr. Raúl es impecable."</p></div>
+      <div class="review"><div class="g">★ Google</div><div class="top"><div class="av">A</div><div><div class="nm">Andrés R.</div><div class="d">hace 1 mes</div></div></div><div class="stars">★★★★★</div><p>"Mi sonrisa cambió, mi confianza también. Atención de primer nivel y un resultado natural, sin que se note nada artificial."</p></div>
+      <div class="review"><div class="g">★ Google</div><div class="top"><div class="av">V</div><div><div class="nm">Valeria M.</div><div class="d">hace 3 semanas</div></div></div><div class="stars">★★★★★</div><p>"Tan natural que nadie nota el trabajo. Solo notan que algo en mí cambió. El Dr. Raúl entiende lo que es estética real."</p></div>
+      <div class="review"><div class="g">★ Google</div><div class="top"><div class="av">J</div><div><div class="nm">Jorge L.</div><div class="d">hace 1 semana</div></div></div><div class="stars">★★★★★</div><p>"El nivel de detalle es de otro mundo. Cada pieza pensada milimétricamente. Recomendado al 100%."</p></div>
+      <div class="review"><div class="g">★ Google</div><div class="top"><div class="av">D</div><div><div class="nm">Daniela P.</div><div class="d">hace 2 meses</div></div></div><div class="stars">★★★★★</div><p>"Trato espectacular desde la primera consulta. Te explica todo con paciencia y el resultado superó mis expectativas."</p></div>
+      <div class="review"><div class="g">★ Google</div><div class="top"><div class="av">R</div><div><div class="nm">Roberto S.</div><div class="d">hace 3 meses</div></div></div><div class="stars">★★★★★</div><p>"Vale cada peso. El antes y el después de mi sonrisa es la mejor inversión que he hecho en mí."</p></div>
+      <div class="review"><div class="g">★ Google</div><div class="top"><div class="av">M</div><div><div class="nm">María F.</div><div class="d">hace 2 semanas</div></div></div><div class="stars">★★★★★</div><p>"Entré tapándome la boca al reír. Salí sin querer dejar de sonreír. El trabajo del Dr. Raúl es impecable."</p></div>
+      <div class="review"><div class="g">★ Google</div><div class="top"><div class="av">A</div><div><div class="nm">Andrés R.</div><div class="d">hace 1 mes</div></div></div><div class="stars">★★★★★</div><p>"Mi sonrisa cambió, mi confianza también. Atención de primer nivel y un resultado natural, sin que se note nada artificial."</p></div>
+      <div class="review"><div class="g">★ Google</div><div class="top"><div class="av">V</div><div><div class="nm">Valeria M.</div><div class="d">hace 3 semanas</div></div></div><div class="stars">★★★★★</div><p>"Tan natural que nadie nota el trabajo. Solo notan que algo en mí cambió. El Dr. Raúl entiende lo que es estética real."</p></div>
+      <div class="review"><div class="g">★ Google</div><div class="top"><div class="av">J</div><div><div class="nm">Jorge L.</div><div class="d">hace 1 semana</div></div></div><div class="stars">★★★★★</div><p>"El nivel de detalle es de otro mundo. Cada pieza pensada milimétricamente. Recomendado al 100%."</p></div>
+      <div class="review"><div class="g">★ Google</div><div class="top"><div class="av">D</div><div><div class="nm">Daniela P.</div><div class="d">hace 2 meses</div></div></div><div class="stars">★★★★★</div><p>"Trato espectacular desde la primera consulta. Te explica todo con paciencia y el resultado superó mis expectativas."</p></div>
+      <div class="review"><div class="g">★ Google</div><div class="top"><div class="av">R</div><div><div class="nm">Roberto S.</div><div class="d">hace 3 meses</div></div></div><div class="stars">★★★★★</div><p>"Vale cada peso. El antes y el después de mi sonrisa es la mejor inversión que he hecho en mí."</p></div>
+    </div>
+  </div>
+  <a class="google-cta" href="https://maps.app.goo.gl/X9Xg7KMZWQ1DM6MZ9" target="_blank" rel="noopener" data-t="rs-cta">Ver todas en Google →</a>
+  <p class="tiny" style="margin-top:1.5rem" data-t="rs-foot">Reseñas de muestra · se conectan en vivo con su Google Maps</p>
+</section>
+<div class="section-divider"></div>
+
+<!-- 09 · FAQ -->
+<section id="faq" data-page="09">
+  <div class="head" data-reveal>
+    <p class="eyebrow" data-t="faq-eyebrow">Preguntas frecuentes</p>
+    <h2 data-t="faq-h">Lo que <span class="it gold-text">siempre nos preguntan</span></h2>
+  </div>
+  <div class="faq-list" data-reveal data-delay="1">
+    <div class="faq-item"><div class="q"><span data-t="faq-q1">¿Cuánto cuesta un diseño de sonrisa con carillas?</span><span class="plus">+</span></div><div class="a" data-t="faq-a1">El costo depende del número de carillas, el tipo de porcelana y la complejidad de cada caso. Cada plan se cotiza tras una valoración personalizada — contáctanos por WhatsApp para una estimación sin compromiso.</div></div>
+    <div class="faq-item"><div class="q"><span data-t="faq-q2">¿El procedimiento es doloroso?</span><span class="plus">+</span></div><div class="a" data-t="faq-a2">No. Se realiza con anestesia local y técnicas mínimamente invasivas. La mayoría de pacientes describen la experiencia como cómoda y sin molestias significativas.</div></div>
+    <div class="faq-item"><div class="q"><span data-t="faq-q3">¿En cuánto tiempo veo el resultado final?</span><span class="plus">+</span></div><div class="a" data-t="faq-a3">Un diseño de sonrisa completo puede tomar de 2 a 4 visitas en el lapso de algunas semanas. Verás tu sonrisa proyectada digitalmente desde la primera sesión.</div></div>
+    <div class="faq-item"><div class="q"><span data-t="faq-q4">¿Las carillas se ven naturales?</span><span class="plus">+</span></div><div class="a" data-t="faq-a4">Sí, ese es justo nuestro sello. Cada carilla se diseña para integrarse con tu rostro, tu sonrisa y tu personalidad. El objetivo siempre es que se vea como tu mejor versión, no como otra persona.</div></div>
+    <div class="faq-item"><div class="q"><span data-t="faq-q5">¿Cuánto duran las carillas de porcelana?</span><span class="plus">+</span></div><div class="a" data-t="faq-a5">Con los cuidados adecuados, las carillas de porcelana de alta calidad pueden durar entre 15 y 20 años, en muchos casos más. Te entregamos las indicaciones para que duren al máximo.</div></div>
+    <div class="faq-item"><div class="q"><span data-t="faq-q6">¿Atienden pacientes de otras ciudades o países?</span><span class="plus">+</span></div><div class="a" data-t="faq-a6">Sí. Recibimos pacientes de todo México y del extranjero. Coordinamos las visitas para optimizar tu tiempo y, si es necesario, te orientamos sobre hospedaje cercano a la clínica.</div></div>
+  </div>
+</section>
+<div class="section-divider"></div>
+
+<!-- 10 · CONTACTO -->
+<section id="contacto" data-page="10">
+  <div class="inner">
+    <p class="eyebrow eyebrow-light" data-reveal data-t="cont-eyebrow">Agenda tu valoración</p>
+    <h2 data-reveal data-delay="1" data-t="cont-h">Nuestros <span class="it gold-text">espacios</span></h2>
+    <p class="lead" data-reveal data-delay="2" data-t="cont-lead">Dos clínicas diseñadas para ofrecer una experiencia cómoda, privada y excepcional desde el primer momento. Elige la ubicación que mejor se adapte a ti.</p>
+    <div class="wa-options" data-reveal data-delay="3">
+      <div style="text-align:center">
+        <a class="btn-gold" href="https://api.whatsapp.com/send?phone=523315315405&text=hola%2C%20me%20interesa%20una%20cita%20con%20el%20dr%20Raul%20en%20Puerta%20de%20Hierro" target="_blank" rel="noopener">WhatsApp · Puerta de Hierro →</a>
+        <small data-t="wa-1">Zapopan</small>
+      </div>
+      <div style="text-align:center">
+        <a class="btn-gold" href="https://api.whatsapp.com/send?phone=523314463097&text=hola%2C%20me%20interesa%20una%20cita%20en%20Huentit%C3%A1n" target="_blank" rel="noopener">WhatsApp · Huentitán →</a>
+        <small data-t="wa-2">Guadalajara</small>
+      </div>
+    </div>
+    <div class="socials" data-reveal data-delay="4">
+      <a href="https://www.instagram.com/dr_raul_perez" target="_blank" rel="noopener">Instagram <span class="ig-followers">250k</span></a>
+      <a href="https://www.instagram.com/dr_elite_" target="_blank" rel="noopener">@dr_elite_</a>
+      <a href="https://www.instagram.com/clinica_dental_perez_" target="_blank" rel="noopener">@clinica_dental_perez_</a>
+      <a href="https://www.tiktok.com/@drraulperez" target="_blank" rel="noopener">TikTok</a>
+      <a href="http://www.youtube.com/@dr.raulperez3986" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.facebook.com/DOCRAULPEREZ" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="name"><b>Clínica Dental Pérez</b> · <span class="gold-text">Dr. Raúl Pérez</span></p>
+  <p class="meta" data-t="foot-meta">Diseño de sonrisa · Carillas de porcelana<br>Guadalajara · Zapopan · Jalisco, México</p>
+  <p class="credit" data-t="credit"><span class="rights">Todos los derechos reservados</span>Página web desarrollada por <a href="https://www.facebook.com/share/18wLJPANg4/" target="_blank" rel="noopener">Estudio 24</a></p>
+</footer>
+
+<div class="demo-note" data-t="demo"><b>VERSIÓN DE MUESTRA</b> — imágenes y textos de referencia. Todo se personaliza con el contenido real del Dr.</div>
+
+<script>
+/* reveal */
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.15});
+document.querySelectorAll('[data-reveal]').forEach(el=>io.observe(el));
+
+/* fade-up de sección completa */
+const sectionFadeIO=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.1});
+document.querySelectorAll('.section-fade').forEach(el=>sectionFadeIO.observe(el));
+
+/* portrait reveal y pcol con sus hijos animados */
+const pcolIO=new IntersectionObserver((es)=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      const portrait=e.target.querySelector('[data-portrait]');
+      if(portrait)portrait.classList.add('in');
+    }
+  });
+},{threshold:.3});
+document.querySelectorAll('[data-pcol]').forEach(el=>pcolIO.observe(el));
+
+/* CONTADOR de años — anima al entrar en pantalla */
+const counterIO=new IntersectionObserver((es)=>{
+  es.forEach(e=>{
+    if(e.isIntersecting && !e.target.dataset.done){
+      e.target.dataset.done='1';
+      const target=+e.target.dataset.target;
+      const dur=1800;
+      const start=performance.now();
+      function step(now){
+        const p=Math.min((now-start)/dur,1);
+        // easing easeOutCubic
+        const eased=1-Math.pow(1-p,3);
+        e.target.textContent=Math.floor(eased*target);
+        if(p<1)requestAnimationFrame(step);
+        else e.target.textContent=target;
+      }
+      requestAnimationFrame(step);
+    }
+  });
+},{threshold:.5});
+document.querySelectorAll('[data-counter]').forEach(el=>counterIO.observe(el));
+
+/* progreso + topbar */
+const prog=document.getElementById('prog');
+const topbar=document.querySelector('.topbar');
+const hero=document.getElementById('hero');
+
+function onScroll(){
+  const h=document.documentElement.scrollHeight-innerHeight;
+  prog.style.width=(scrollY/h*100)+'%';
+  const heroBottom=hero.getBoundingClientRect().bottom;
+  topbar.classList.toggle('dark',heroBottom>80);
+}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+/* MENÚ HAMBURGUESA */
+const burger=document.getElementById('burger');
+const menuPanel=document.getElementById('menuPanel');
+const menuOverlay=document.getElementById('menuOverlay');
+const menuClose=document.getElementById('menuClose');
+function openMenu(){burger.classList.add('open');menuPanel.classList.add('open');menuOverlay.classList.add('open');burger.setAttribute('aria-expanded','true');menuPanel.setAttribute('aria-hidden','false');}
+function closeMenu(){burger.classList.remove('open');menuPanel.classList.remove('open');menuOverlay.classList.remove('open');burger.setAttribute('aria-expanded','false');menuPanel.setAttribute('aria-hidden','true');}
+burger.addEventListener('click',()=>menuPanel.classList.contains('open')?closeMenu():openMenu());
+menuClose.addEventListener('click',closeMenu);
+menuOverlay.addEventListener('click',closeMenu);
+menuPanel.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',closeMenu));
+addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
+
+/* CARRUSEL famosos */
+const fameSlides=document.querySelectorAll('.fame-slide');
+const fameDots=document.querySelectorAll('.fame-dots button');
+let fameIdx=0;
+function setFame(i){
+  fameIdx=(i+fameSlides.length)%fameSlides.length;
+  fameSlides.forEach((s,k)=>{
+    s.classList.remove('active','prev','next','far-prev','far-next');
+    const diff=(k-fameIdx+fameSlides.length)%fameSlides.length;
+    if(diff===0)s.classList.add('active');
+    else if(diff===1)s.classList.add('next');
+    else if(diff===fameSlides.length-1)s.classList.add('prev');
+    else if(diff===2)s.classList.add('far-next');
+    else s.classList.add('far-prev');
+  });
+  fameDots.forEach((d,k)=>d.classList.toggle('active',k===fameIdx));
+}
+setFame(0);
+fameDots.forEach(d=>d.addEventListener('click',()=>setFame(+d.dataset.fd)));
+setInterval(()=>setFame(fameIdx+1),4500);
+
+/* TARJETAS QUE GIRAN */
+document.querySelectorAll('.flip-card').forEach(card=>{
+  card.addEventListener('click',(e)=>{
+    if(e.target.classList.contains('close')){
+      e.stopPropagation();
+      card.classList.remove('flipped');
+      return;
+    }
+    card.classList.toggle('flipped');
+  });
+});
+
+/* ANTES/DESPUÉS — slider arrastrable optimizado para touch
+   Sin necesidad de mantener cursor encima: arrastra y suelta */
+document.querySelectorAll('[data-ba]').forEach(ba=>{
+  const after=ba.querySelector('.reveal-after');
+  const handle=ba.querySelector('.handle');
+  let isDragging=false;
+  let pos=50;
+
+  function setPos(p){
+    pos=Math.max(0,Math.min(100,p));
+    after.style.clipPath=`inset(0 0 0 ${pos}%)`;
+    handle.style.left=pos+'%';
+  }
+
+  function getPosFromX(x){
+    const r=ba.getBoundingClientRect();
+    return ((x-r.left)/r.width)*100;
+  }
+
+  function start(x){isDragging=true;ba.classList.add('dragging');setPos(getPosFromX(x));}
+  function move(x){if(!isDragging)return;setPos(getPosFromX(x));}
+  function end(){isDragging=false;ba.classList.remove('dragging');}
+
+  // mouse
+  handle.addEventListener('mousedown',e=>{e.preventDefault();start(e.clientX)});
+  ba.addEventListener('mousedown',e=>{if(e.target===handle||handle.contains(e.target))return;start(e.clientX)});
+  window.addEventListener('mousemove',e=>move(e.clientX));
+  window.addEventListener('mouseup',end);
+
+  // touch
+  ba.addEventListener('touchstart',e=>{start(e.touches[0].clientX)},{passive:true});
+  ba.addEventListener('touchmove',e=>{if(isDragging){e.preventDefault();move(e.touches[0].clientX)}},{passive:false});
+  ba.addEventListener('touchend',end);
+  ba.addEventListener('touchcancel',end);
+
+  // posición inicial
+  setPos(50);
+});
+
+/* FAQ */
+document.querySelectorAll('.faq-item').forEach(it=>{
+  it.querySelector('.q').addEventListener('click',()=>{
+    const wasOpen=it.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(x=>x.classList.remove('open'));
+    if(!wasOpen)it.classList.add('open');
+  });
+});
+
+/* IDIOMA */
+const DICT={en:{
+'nav-1':'Chosen by artists','nav-2':'Our services','nav-3':'The expert','nav-4':'Results','nav-5':'Appearances','nav-6':'Our clinics','nav-7':'Contact',
+'hero-h':'<span class="it gold-text">The smile chosen</span><br>by artists.<br>Created for you.','hero-tagline':'Specialists in smile design and porcelain veneers in Guadalajara.','hero-cta1':'Book a visit →','hero-cta2':'See cases',
+'fame-eyebrow':'Trusted by the elite','fame-h':'The <span class="it gold-text">celebrity dentist</span>','fame-lead':'Smile design expert. Recognized by public figures, artists and professionals who understand that their image opens doors.','fame-claim':'Smile design expert',
+'mq-1':'Smile design','mq-2':'Orthodontics','mq-3':'Veneers','mq-1b':'Smile design','mq-2b':'Orthodontics','mq-3b':'Veneers',
+'srvi-eyebrow':'What we offer','srvi-h':'Elite services','srvi-sub':'Click each card to discover more','hint':'Flip card',
+'sv1':'Smile design','sv1d':'Our specialty. We create smiles tailored to your face, character and lifestyle. The service that has made Dr. Raúl the reference among public figures.',
+'sv2':'Surgery','sv2d':'Dental and maxillofacial surgical procedures with modern, minimally invasive techniques and aesthetic focus at every step.',
+'sv3':'Orthodontics','sv3d':'Discreet and effective dental alignment. Aesthetic brackets and clear aligners so the process is as elegant as the result.',
+'sv4':'Implants','sv4d':'Fixed and permanent tooth replacement with high-end materials. Regain your bite and confidence at the same time.',
+'sv5':'Periodontics','sv5d':'Specialized gum care. The foundation of every beautiful smile: healthy, balanced gums.',
+'sv6':'Pediatric dentistry','sv6d':'Warm and professional care for the little ones. We protect their first relationship with the dentist.',
+'sv7':'Endodontics','sv7d':'Root canal treatments with advanced technology to save teeth with precision, comfort and lasting results.',
+'srvi-foot':'Every case is unique. Contact us for a personalized assessment',
+'acc-1':'Years transforming smiles','sobre-eyebrow':'About the doctor','sobre-h':'The expert behind <span class="it gold-text">your smile</span>','sobre-p1':"Dr. Raúl Pérez doesn't design teeth: he designs the first impression you leave when entering a room. A specialist in smile design and porcelain veneers, his work is a reference among public figures.",'sobre-p2':"With more than a decade of experience and two clinics in Guadalajara, he has built a personal brand — Dr. Elite — where every case is treated as a unique piece, tailored to your face and character.",'cedula':'<b>Professional license</b> · to be confirmed',
+'gal-eyebrow':'Transformations','gal-h':'The before <span class="it gold-text">no one will remember</span>','gal-p':'Drag the gold handle of each image to reveal the transformation','ba-a':'After','ba-a2':'After','ba-a3':'After','ba-b':'Before','ba-b2':'Before','ba-b3':'Before','ba-hint':'Drag','ba-hint2':'Drag','ba-hint3':'Drag','gal-foot':'Sample images · replaced with real cases',
+'rc-eyebrow':'On camera','rc-h':'Where <span class="it gold-text">inspiring smiles</span> are born','rc-p':'Discover interviews, collaborations and experiences with artists, celebrities and influencers who are part of the Dr. Elite universe.','rc-1s':'Interview','rc-1h':"On Dr. Raúl's channel",'rc-2s':'Interview','rc-2h':"On Dr. Raúl's channel",'rc-3s':'Interview','rc-3h':"On Dr. Raúl's channel",'rc-4s':'Interview','rc-4h':"On Dr. Raúl's channel",'rc-cta':'See full YouTube channel →',
+'ubi-eyebrow':'Our Clinics','ubi-h':'Two clinics, <span class="it gold-text">one obsession</span>','cl1-h':'Puerta de Hierro','cl1-a':'Our premium location, designed for the most exclusive experience.','cl1-m':'📍 View map','cl1-w':'WhatsApp','cl2-h':'Huentitán','cl2-a':'The original clinic. Close, high-quality care in the heart of Guadalajara.','cl2-m':'📍 View map','cl2-w':'WhatsApp',
+'rs-eyebrow':'Real experiences, extraordinary results','rs-h':'From those <span class="it gold-text">who lived the experience</span>','rs-count':'based on reviews','rs-cta':'See all on Google →','rs-foot':'Sample reviews · connected live with Google Maps',
+'faq-eyebrow':'Frequently asked','faq-h':'What people <span class="it gold-text">always ask</span>','faq-q1':'How much does a smile design with veneers cost?','faq-a1':'The cost depends on the number of veneers and the complexity of each case.','faq-q2':'Is the procedure painful?','faq-a2':"No. It's performed with local anesthesia and minimally invasive techniques.",'faq-q3':'How long until I see the final result?','faq-a3':'A complete smile design can take 2 to 4 visits over a few weeks.','faq-q4':'Do the veneers look natural?','faq-a4':"Yes, that's our signature.",'faq-q5':'How long do porcelain veneers last?','faq-a5':'With proper care, 15 to 20 years or more.','faq-q6':'Do you see patients from other cities?','faq-a6':'Yes. We receive patients from all of Mexico and abroad.',
+'cont-eyebrow':'Book your assessment','cont-h':'Our <span class="it gold-text">spaces</span>','cont-lead':'Two clinics designed to offer a comfortable, private and exceptional experience from the first moment. Choose the location that best suits you.','wa-1':'Zapopan','wa-2':'Guadalajara',
+'foot-meta':'Smile design · Porcelain veneers<br>Guadalajara · Zapopan · Jalisco, Mexico','credit':'<span class="rights">All rights reserved</span>Website developed by <a href="https://www.facebook.com/share/18wLJPANg4/" target="_blank" rel="noopener">Estudio 24</a>',
+'demo':'<b>SAMPLE VERSION</b> — reference images and text. Everything is customized with the real content.'
+}};
+const ES={};document.querySelectorAll('[data-t]').forEach(el=>ES[el.dataset.t]=el.innerHTML);
+document.querySelectorAll('.lang button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const lang=b.dataset.lang;
+    document.querySelectorAll('.lang button').forEach(x=>x.classList.toggle('active',x===b));
+    document.documentElement.lang=lang;
+    document.querySelectorAll('[data-t]').forEach(el=>{const k=el.dataset.t;if(lang==='en'&&DICT.en[k]!=null)el.innerHTML=DICT.en[k];else if(lang==='es')el.innerHTML=ES[k];});
+  });
+});
+</script>
+</body>
+</html>
