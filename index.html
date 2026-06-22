@@ -224,8 +224,9 @@ section{position:relative;padding:14vh 8vw}
 .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.05);pointer-events:none}
 .ba .reveal-after{z-index:2;clip-path:inset(0 0 0 50%);transition:clip-path .3s var(--ease)}
 .ba.dragging .reveal-after{transition:none}
-.ba .tag{position:absolute;top:14px;left:14px;z-index:3;background:rgba(247,244,238,.95);backdrop-filter:blur(6px);padding:6px 13px;font-family:var(--sans);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--navy);font-weight:600}
-.ba .tag.b{left:auto;right:14px;z-index:1;background:rgba(14,27,54,.85);color:var(--bg)}
+.ba .tag{position:absolute;top:14px;right:14px;z-index:3;background:rgba(247,244,238,.95);backdrop-filter:blur(6px);padding:6px 13px;font-family:var(--sans);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--navy);font-weight:600;transition:clip-path .3s var(--ease)}
+.ba.dragging .tag{transition:none}
+.ba .tag.b{right:auto;left:14px;z-index:1;background:rgba(14,27,54,.85);color:var(--bg)}
 /* manija visible y arrastrable, optimizada para touch */
 .ba .handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--bg);z-index:4;transform:translateX(-1px);box-shadow:0 0 12px rgba(0,0,0,.3);transition:left .3s var(--ease);cursor:ew-resize}
 .ba.dragging .handle{transition:none}
@@ -801,13 +802,16 @@ document.querySelectorAll('.flip-card').forEach(card=>{
    Sin necesidad de mantener cursor encima: arrastra y suelta */
 document.querySelectorAll('[data-ba]').forEach(ba=>{
   const after=ba.querySelector('.reveal-after');
+  const tagAfter=ba.querySelector('.tag:not(.b)');
   const handle=ba.querySelector('.handle');
   let isDragging=false;
   let pos=50;
 
   function setPos(p){
     pos=Math.max(0,Math.min(100,p));
-    after.style.clipPath=`inset(0 0 0 ${pos}%)`;
+    const clip=`inset(0 0 0 ${pos}%)`;
+    after.style.clipPath=clip;
+    if(tagAfter)tagAfter.style.clipPath=clip;
     handle.style.left=pos+'%';
   }
 
